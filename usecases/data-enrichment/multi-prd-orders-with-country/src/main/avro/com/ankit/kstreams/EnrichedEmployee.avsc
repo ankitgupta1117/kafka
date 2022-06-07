@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "namespace": "com.ankit.kstreams",
+  "name": "EnrichedEmployee",
+  "fields": [
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "country",
+      "type": "string"
+    }
+  ]
+}
