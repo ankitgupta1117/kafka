@@ -1,6 +1,7 @@
 package com.ankit.kafka.store.lookup.config;
 
 import com.ankit.kafka.store.lookup.processors.CountryStreamProcessor;
+import com.ankit.kafka.store.lookup.processors.OrdersEnricher;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,5 +17,9 @@ public class KafkaStreamsConfig {
         return new CountryStreamProcessor();
     }
 
+    @Bean
+    public OrdersEnricher ordersEnricher(){
+        return new OrdersEnricher();
+    }
 }
 

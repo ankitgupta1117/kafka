@@ -1,6 +1,7 @@
 package com.ankit.rest.services;
 
 import com.ankit.kstreams.Country;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyQueryMetadata;
@@ -19,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 
 @Service
+@Slf4j
 public class CountryService {
 
     public static final String COUNTRY_STORE = "country-store";
@@ -44,7 +46,9 @@ public class CountryService {
             ReadOnlyKeyValueStore<Object, Object> store = streams.store(StoreQueryParameters.fromNameAndType(COUNTRY_STORE, QueryableStoreTypes.keyValueStore()));
             Country country = (Country) store.get(countryId);
             return country.getCountry();
-        }else{  // Else execute a REST call to target instance to get the value
+        }else{
+            // Else execute a REST call to target instance to get the value
+            log.info("Could not find country data in local instance. Calling api to target instance: {}:{}", hostInfo.host(), hostInfo.port());
             String url = new StringBuilder("http://")
                             .append(hostInfo.host())
                     .append(":").append(hostInfo.port())
