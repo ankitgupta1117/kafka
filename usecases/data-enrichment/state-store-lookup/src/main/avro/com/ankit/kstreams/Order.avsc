@@ -1,0 +1,22 @@
+{
+  "type": "record",
+  "namespace": "com.ankit.kstreams",
+  "name": "Order",
+  "fields": [
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "type": {
+        "type": "array",
+        "items": "com.ankit.kstreams.Product"
+      },
+      "name": "products"
+    }
+  ]
+}

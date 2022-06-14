@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "name": "Product",
+  "namespace": "com.ankit.kstreams",
+  "fields": [
+    {
+      "name": "productId",
+      "type": "int"
+    },
+    {
+      "name": "country_code",
+      "type": "int"
+    },
+    {
+      "name": "country",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "productName",
+      "type": "string"
+    }
+  ]
+}
