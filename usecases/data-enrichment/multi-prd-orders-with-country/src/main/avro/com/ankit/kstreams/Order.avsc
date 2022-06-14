@@ -1,23 +1,22 @@
 {
   "type": "record",
   "namespace": "com.ankit.kstreams",
-  "name": "EnrichedEmployee",
+  "name": "Order",
   "fields": [
     {
       "name": "id",
       "type": "int"
     },
     {
-      "name": "name",
-      "type": "string"
-    },
-    {
       "name": "status",
       "type": "string"
     },
     {
-      "name": "country",
-      "type": "string"
+      "type": {
+        "type": "array",
+        "items": "com.ankit.kstreams.Product"
+      },
+      "name": "products"
     }
   ]
 }

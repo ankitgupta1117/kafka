@@ -1,21 +1,19 @@
 package com.ankit.kafka.config;
 
-import com.ankit.kafka.processors.EmployeeEnricher;
-import org.springframework.beans.factory.annotation.Value;
+import com.ankit.kafka.processors.OrdersEnricher;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
-import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableKafkaStreams
-@ConditionalOnProperty(value = "enable.streams",havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(value = "enable.streams",havingValue = "true", matchIfMissing = false)
 public class KafkaStreamsConfig {
 
     @Bean
-    public EmployeeEnricher employeeEnricher(){
-        return new EmployeeEnricher();
+    public OrdersEnricher ordersEnricher(){
+        return new OrdersEnricher();
     }
 
 }

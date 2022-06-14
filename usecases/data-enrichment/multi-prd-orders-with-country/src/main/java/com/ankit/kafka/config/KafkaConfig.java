@@ -22,10 +22,12 @@ public class KafkaConfig {
     }
 
     @Bean
-    public KafkaAdmin.NewTopics topics(){
-        NewTopic addressTopic = new NewTopic("address", 3, (short) 1);
-        NewTopic employeeTopic = new NewTopic("employee", 3, (short) 1);
-        NewTopic enrichedEmpTopic = new NewTopic("enriched-employee", 3, (short) 1);
-        return new KafkaAdmin.NewTopics(addressTopic, employeeTopic, enrichedEmpTopic);
+    public KafkaAdmin.NewTopics topics(@Value("${orders.input.topic.name}") String ordersTopicName
+                                        , @Value("${country.input.topic.name}") String countryTopicName
+                                        , @Value("${output.topic.name}") String outputTopicName){
+        NewTopic ordersTopic = new NewTopic(ordersTopicName, 3, (short) 1);
+        NewTopic countryTopic = new NewTopic(countryTopicName, 3, (short) 1);
+        NewTopic enrichedOrders = new NewTopic(outputTopicName, 3, (short) 1);
+        return new KafkaAdmin.NewTopics(ordersTopic, countryTopic, enrichedOrders);
     }
 }
